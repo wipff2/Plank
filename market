@@ -1,0 +1,76 @@
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character
+local hammer = character:FindFirstChild("Hammer") or player.Backpack:FindFirstChild("Hammer")
+local shop5 = workspace.Buildings:FindFirstChild("Shop5")
+
+if not shop5 or not hammer then
+    warn("Shop5 or Hammer not found!")
+    return
+end
+
+local buildPlank = hammer:FindFirstChild("BuildPlank")
+if not buildPlank then
+    warn("BuildPlank event not found!")
+    return
+end
+
+-- Daftar argumen untuk BuildPlank
+local argsList = {
+    {
+        Vector3.new(-77.1927719116211, 3.9702811241149902, 399),
+        Vector3.new(-76.741455078125, 13, 400.0382995605469),
+        shop5.WindowFrame.Part,
+        shop5.WindowFrame.Part,
+        Vector3.new(0, 0, -1)
+    },
+    {
+        Vector3.new(-72.5000228881836, 13, 399.83258056640625),
+        Vector3.new(-72.64933776855469, 4, 399.4839782714844),
+        shop5.WindowFrame.Part,
+        shop5.WindowFrame.Part,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-54.04494857788086, 4, 399.17071533203125),
+        Vector3.new(-53.39495086669922, 13, 400.01702880859375),
+        shop5.WindowFrame.Part,
+        shop5.WindowFrame.Part,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-49.86345291137695, 13, 399.86871337890625),
+        Vector3.new(-50.338558197021484, 4, 399.0809631347656),
+        shop5.WindowFrame.Part,
+        shop5.WindowFrame.Part,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-56.24353790283203, 3.954094648361206, 399),
+        Vector3.new(-66.5149917602539, 6.412103652954102, 399),
+        shop5.WindowFrame.Part,
+        shop5.Part,
+        Vector3.new(0, 0, -1)
+    },
+    {
+        Vector3.new(-83.32081604003906, 4, 364.5184631347656),
+        Vector3.new(-83.10450744628906, 13, 364.3696594238281),
+        shop5.Part,
+        shop5.Part,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-82.53263092041016, 13, 360.42974853515625),
+        Vector3.new(-83.20076751708984, 4, 360.14306640625),
+        shop5.Part,
+        shop5.Part,
+        Vector3.new(-0, -1, -0)
+    }
+}
+
+-- Loop untuk menjalankan BuildPlank dengan semua argumen
+for _, args in ipairs(argsList) do
+    buildPlank:FireServer(unpack(args))
+    task.wait(0.1) -- Menambahkan jeda kecil untuk menghindari lag
+end
+
+print("Market built successfully!")
