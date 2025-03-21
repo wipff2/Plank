@@ -1,0 +1,230 @@
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character
+local hammer = character:FindFirstChild("Hammer") or player.Backpack:FindFirstChild("Hammer")
+local tower = workspace.Buildings:FindFirstChild("Tower")
+
+if not tower or not hammer then
+    warn("Tower or Hammer not found!")
+    return
+end
+
+local buildPlank = hammer:FindFirstChild("BuildPlank")
+if not buildPlank then
+    warn("BuildPlank event not found!")
+    return
+end
+
+-- Daftar argumen untuk BuildPlank
+local argsList = {
+    {
+        Vector3.new(-424.99993896484375, 57.91719055175781, 216.0478057861328),
+        Vector3.new(-425.6636962890625, 53.86227035522461, 224),
+        tower.Part,
+        tower.Table.Part,
+        Vector3.new(-1, -0, -0)
+    },
+    {
+        Vector3.new(-424.90142822265625, 58.5, 218.4810791015625),
+        Vector3.new(-424.99993896484375, 63.50383758544922, 217.84603881835938),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-424.7359313964844, 63.5, 222.58682250976562),
+        Vector3.new(-424.99993896484375, 58.490318298339844, 223.04006958007812),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-424.99993896484375, 58.25443649291992, 228.42138671875),
+        Vector3.new(-424.7525329589844, 63.5, 228.53321838378906),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-1, 0, -0)
+    },
+    {
+        Vector3.new(-424.7995910644531, 63.5, 233.30303955078125),
+        Vector3.new(-424.99993896484375, 58.21562576293945, 233.30606079101562),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-448.31622314453125, 56.81441116333008, 200.99998474121094),
+        Vector3.new(-451.1276550292969, 53, 204.21524047851562),
+        tower.Part,
+        tower.Part,
+        Vector3.new(0, 0, 1)
+    },
+    {
+        Vector3.new(-435.0812072753906, 56.251953125, 200.99998474121094),
+        Vector3.new(-435.480712890625, 68, 198.68649291992188),
+        tower.WindowFrame.WindowFrame,
+        tower.Union,
+        Vector3.new(0, 0, 1)
+    },
+    {
+        Vector3.new(-429.7392578125, 68, 198.92654418945312),
+        Vector3.new(-430.70318603515625, 56.13396072387695, 200.99998474121094),
+        tower.Union,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-424.5118713378906, 63.5, 206.13768005371094),
+        Vector3.new(-424.99993896484375, 58.21892166137695, 206.5718231201172),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-424.56951904296875, 63.5, 211.42132568359375),
+        Vector3.new(-424.99993896484375, 58.185203552246094, 210.72633361816406),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-463.28363037109375, 63.5, 206.2326202392578),
+        Vector3.new(-462.99993896484375, 58.34947204589844, 206.30982971191406),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-458.7550048828125, 68, 198.51260375976562),
+        Vector3.new(-456.6462097167969, 56.5, 200.70533752441406),
+        tower.Union,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-451.63861083984375, 56.144065856933594, 194.49981689453125),
+        Vector3.new(-451.1155090332031, 56.429935455322266, 200.99998474121094),
+        tower.Part,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(0, 0, 1)
+    },
+    {
+        Vector3.new(-449.99993896484375, 62.46125030517578, 200.6252899169922),
+        Vector3.new(-451.91009521484375, 68.0005111694336, 198.5275115966797),
+        tower.WindowFrame.WindowFrame,
+        tower.Union,
+        Vector3.new(-1, -0, -0)
+    },
+    {
+        Vector3.new(-452.2980651855469, 67.77294158935547, 198.95639038085938),
+        Vector3.new(-452.4490661621094, 56.47300720214844, 200.99998474121094),
+        workspace.Planks.Plank,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0.9517462253570557, -0.2869919538497925, 0.1086951196193695)
+    },
+    {
+        Vector3.new(-463.0914306640625, 58.5, 232.496337890625),
+        Vector3.new(-463.452880859375, 63.5, 233.1206817626953),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-463.274658203125, 58.5, 228.59291076660156),
+        Vector3.new(-463.494384765625, 63.5, 228.11961364746094),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-463.1990966796875, 58.5, 221.40090942382812),
+        Vector3.new(-463.3748779296875, 63.5, 221.59786987304688),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-463.3897705078125, 63.5, 216.660888671875),
+        Vector3.new(-462.99993896484375, 58.30615997314453, 216.4199981689453),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-463.29486083984375, 63.5, 211.22021484375),
+        Vector3.new(-462.99993896484375, 58.442626953125, 210.63560485839844),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-444.29498291015625, 68, 241.01722717285156),
+        Vector3.new(-443.9917907714844, 55.430667877197266, 238.99998474121094),
+        tower.Union,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-447.1290283203125, 55.5, 239.0604705810547),
+        Vector3.new(-447.59832763671875, 68, 241.94473266601562),
+        tower.WindowFrame.WindowFrame,
+        tower.Union,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-452.6848449707031, 55.5, 239.55279541015625),
+        Vector3.new(-452.3465881347656, 68, 240.9444580078125),
+        tower.WindowFrame.WindowFrame,
+        tower.Union,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-456.9502868652344, 68, 241.25062561035156),
+        Vector3.new(-456.3610534667969, 55.5, 239.3023223876953),
+        tower.Union,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-460.86383056640625, 53, 238.68417358398438),
+        Vector3.new(-457.7498779296875, 56.4102783203125, 235.8221893310547),
+        tower.Part,
+        tower.Table.Part,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-429.7878723144531, 55.5, 239.67861938476562),
+        Vector3.new(-430.59405517578125, 66.5, 239.78184509277344),
+        tower.WindowFrame.WindowFrame,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-433.2003479003906, 55.5, 239.36495971679688),
+        Vector3.new(-433.2389831542969, 68.0005111694336, 241.1464385986328),
+        tower.WindowFrame.WindowFrame,
+        tower.Union,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-436.3688049316406, 68.0005111694336, 240.90585327148438),
+        Vector3.new(-436.7321472167969, 55.5, 239.42831420898438),
+        tower.Union,
+        tower.WindowFrame.WindowFrame,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-441.1200256347656, 55.5, 239.748779296875),
+        Vector3.new(-440.4057312011719, 68.0005111694336, 241.2366485595703),
+        tower.WindowFrame.WindowFrame,
+        tower.Union,
+        Vector3.new(0, 1, 0)
+    }
+}
+
+-- Loop untuk menjalankan BuildPlank dengan semua argumen
+for _, args in ipairs(argsList) do
+    buildPlank:FireServer(unpack(args))
+    task.wait(0.1) -- Menambahkan jeda kecil untuk menghindari lag
+end
+
+print("Tower built successfully!")
