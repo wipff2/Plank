@@ -1,0 +1,23 @@
+local planks = {
+    {Vector3.new(-20, 8.993, 320.966), Vector3.new(-20, 7.616, 310.349), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(1, 0, 0)},
+    {Vector3.new(-20, 10.291, 301.986), Vector3.new(-15.614, 8.152, 290.5), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(1, 0, 0)},
+    {Vector3.new(-11.190, 9.260, 290.5), Vector3.new(-1.345, 8.463, 290.5), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(0, 0, 1)},
+    {Vector3.new(4.433, 7.912, 290.5), Vector3.new(21.016, 9.633, 290.5), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(0, 0, 1)},
+    {Vector3.new(36, 11.159, 290.602), Vector3.new(24.221, 9.226, 290.5), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(-1, 0, 0)},
+    {Vector3.new(36.838, 4, 321.240), Vector3.new(37.063, 13, 321.936), workspace.Buildings.Shop3.WindowFrame.Part, workspace.Buildings.Shop3.WindowFrame.Part, Vector3.new(0, 1, 0)},
+    {Vector3.new(36, 11.997, 304.064), Vector3.new(36, 12.842, 291.843), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(-1, 0, 0)},
+    {Vector3.new(34.123, 11.713, 326.5), Vector3.new(24.339, 10.431, 326.5), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(0, 0, -1)},
+    {Vector3.new(14.888, 10.118, 326.5), Vector3.new(6.282, 10.639, 326.5), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(0, 0, -1)},
+    {Vector3.new(-0.543, 10.719, 326.5), Vector3.new(-13.264, 10.547, 326.5), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(0, 0, -1)},
+    {Vector3.new(37.141, 13, 307.471), Vector3.new(37.018, 4, 307.847), workspace.Buildings.Shop3.WindowFrame.Part, workspace.Buildings.Shop3.WindowFrame.Part, Vector3.new(0, -1, 0)},
+    {Vector3.new(36.468, 4, 310.220), Vector3.new(37.135, 13, 310.319), workspace.Buildings.Shop3.WindowFrame.Part, workspace.Buildings.Shop3.WindowFrame.Part, Vector3.new(0, 1, 0)},
+    {Vector3.new(36, 3.957, 313.615), Vector3.new(37.117, 13, 313.825), workspace.Buildings.Shop3.WindowFrame.Part, workspace.Buildings.Shop3.WindowFrame.Part, Vector3.new(-1, 0, 0)},
+    {Vector3.new(37.100, 13, 317.446), Vector3.new(37.235, 4, 317.535), workspace.Buildings.Shop3.WindowFrame.Part, workspace.Buildings.Shop3.WindowFrame.Part, Vector3.new(0, -1, 0)}
+}
+
+local hammer = game:GetService("Players").LocalPlayer.Character.Hammer
+for _, plank in ipairs(planks) do
+    hammer.BuildPlank:FireServer(unpack(plank))
+end
+
+print("Market build successful!")
