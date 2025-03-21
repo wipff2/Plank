@@ -1,0 +1,40 @@
+local player = game:GetService("Players").LocalPlayer
+local hammer = player.Character and player.Character:FindFirstChild("Hammer")
+
+if not hammer then
+    warn("Hammer not found!")
+    return
+end
+
+local buildPlankEvent = hammer:FindFirstChild("BuildPlank")
+if not buildPlankEvent then
+    warn("BuildPlank event not found!")
+    return
+end
+
+local housePart = workspace.Buildings.House2.Part
+local windowFrame = workspace.Buildings.House2.WindowFrame.Part
+local plank = workspace.Planks.Plank
+
+local planks = {
+    {Vector3.new(-302.4699, 15.0000, 382.6381), Vector3.new(-302.3982, 1.0000, 383.7771), housePart, housePart, Vector3.new(0, -1, 0)},
+    {Vector3.new(-306.2609, 1.0000, 383.1277), Vector3.new(-305.7232, 15.0000, 383.1858), housePart, housePart, Vector3.new(0, 1, 0)},
+    {Vector3.new(-310.0000, 7.8073, 382.4172), Vector3.new(-310.0000, 3.3154, 364.6962), housePart, housePart, Vector3.new(1, 0, 0)},
+    {Vector3.new(-310.7087, 15.0000, 357.9288), Vector3.new(-310.0000, 5.7496, 358.1248), windowFrame, windowFrame, Vector3.new(0, -1, 0)},
+    {Vector3.new(-310.0000, 5.7775, 354.3365), Vector3.new(-310.7658, 15.0000, 353.9219), windowFrame, windowFrame, Vector3.new(1, 0, 0)},
+    {Vector3.new(-282.0552, 1.0000, 379.3742), Vector3.new(-287.1880, 1.0000, 381.8763), housePart, housePart, Vector3.new(0, 1, 0)},
+    {Vector3.new(-291.3687, 1.0000, 383.4165), Vector3.new(-294.5996, 1.0000, 385.5171), housePart, housePart, Vector3.new(0, 1, 0)},
+    {Vector3.new(-291.4134, 1.5000, 382.5380), Vector3.new(-292.1805, 15.3976, 382.5000), plank, housePart, Vector3.new(0, 1, 0)},
+    {Vector3.new(-295.0758, 1.0000, 382.9739), Vector3.new(-296.1737, 15.0000, 382.5710), housePart, housePart, Vector3.new(0, 1, 0)},
+    {Vector3.new(-299.0338, 1.0000, 382.8466), Vector3.new(-299.6876, 15.0000, 382.7622), housePart, housePart, Vector3.new(0, 1, 0)},
+    {Vector3.new(-278.2258, 1.0000, 382.4787), Vector3.new(-277.9142, 15.0000, 382.8790), housePart, housePart, Vector3.new(0, 1, 0)},
+    {Vector3.new(-280.8235, 15.0000, 383.1983), Vector3.new(-281.0055, 1.0000, 383.3540), housePart, housePart, Vector3.new(0, -1, 0)},
+    {Vector3.new(-284.1166, 1.0000, 383.0866), Vector3.new(-284.3141, 15.0000, 382.6943), housePart, housePart, Vector3.new(0, 1, 0)},
+    {Vector3.new(-287.6189, 15.0000, 382.9805), Vector3.new(-287.7320, 1.0000, 383.8937), housePart, housePart, Vector3.new(0, -1, 0)}
+}
+
+for _, args in ipairs(planks) do
+    buildPlankEvent:FireServer(unpack(args))
+end
+
+print("house garage 2 success")
