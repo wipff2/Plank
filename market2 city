@@ -1,3 +1,17 @@
+local player = game:GetService("Players").LocalPlayer
+local hammer = player.Character and player.Character:FindFirstChild("Hammer")
+
+if not hammer then
+    warn("Hammer not found!")
+    return
+end
+
+local buildPlankEvent = hammer:FindFirstChild("BuildPlank")
+if not buildPlankEvent then
+    warn("BuildPlank event not found!")
+    return
+end
+
 local planks = {
     {Vector3.new(-20, 8.993, 320.966), Vector3.new(-20, 7.616, 310.349), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(1, 0, 0)},
     {Vector3.new(-20, 10.291, 301.986), Vector3.new(-15.614, 8.152, 290.5), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(1, 0, 0)},
