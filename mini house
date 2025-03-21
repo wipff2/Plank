@@ -1,0 +1,146 @@
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character
+local hammer = character:FindFirstChild("Hammer") or player.Backpack:FindFirstChild("Hammer")
+local shackTemplate = workspace.Buildings:FindFirstChild("Shack1 Template")
+
+if not shackTemplate or not hammer then
+    warn("Shack1 Template or Hammer not found!")
+    return
+end
+
+local buildPlank = hammer:FindFirstChild("BuildPlank")
+if not buildPlank then
+    warn("BuildPlank event not found!")
+    return
+end
+
+-- Daftar argumen untuk BuildPlank
+local argsList = {
+    {
+        Vector3.new(-46.285888671875, 4, -130.4774627685547),
+        Vector3.new(-46.006813049316406, 10.5, -130.97035217285156),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-46.72505569458008, 4, -128.02862548828125),
+        Vector3.new(-46.13789367675781, 10.5, -127.36564636230469),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-36.637367248535156, 4, -116.05040740966797),
+        Vector3.new(-36.971683502197266, 12.000003814697266, -115.77681732177734),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-38.81383514404297, 4, -115.33953094482422),
+        Vector3.new(-38.98119354248047, 12.000003814697266, -115.83660888671875),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-33.96326446533203, 4, -115.5654296875),
+        Vector3.new(-34.455020904541016, 12.000003814697266, -115.99190521240234),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-15.536359786987305, 10.297650337219238, -117),
+        Vector3.new(-15.968338966369629, 2, -127.34575653076172),
+        shackTemplate.Part,
+        shackTemplate.Part,
+        Vector3.new(-0, -0, -1)
+    },
+    {
+        Vector3.new(-24.84127426147461, 10.0736665725708, -117),
+        Vector3.new(-23.699501037597656, 2, -126.23741149902344),
+        shackTemplate.Part,
+        shackTemplate.Part,
+        Vector3.new(-0, -0, -1)
+    },
+    {
+        Vector3.new(-11.8286714553833, 4.514544486999512, -125.5),
+        Vector3.new(-18.657678604125977, 2, -131.3857879638672),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.Part,
+        Vector3.new(0, 0, -1)
+    },
+    {
+        Vector3.new(-10.757721900939941, 4, -127.921142578125),
+        Vector3.new(-10.819868087768555, 10.5, -127.7155990600586),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-26.086851119995117, 4.5, -161.03073120117188),
+        Vector3.new(-27.45322036743164, 12.999996185302734, -161.4932861328125),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-10.50956916809082, 4, -130.4993438720703),
+        Vector3.new(-10.62364673614502, 10.5, -130.92649841308594),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-28.33014488220215, 4.5, -161.5296630859375),
+        Vector3.new(-29.065446853637695, 12.999996185302734, -161.46417236328125),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-24.78074836730957, 12.999996185302734, -161.44090270996094),
+        Vector3.new(-23.92351531982422, 4.5, -161.41712951660156),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(-10.83790397644043, 4, -149.80250549316406),
+        Vector3.new(-10.993815422058105, 10.5, -149.83724975585938),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-11.148481369018555, 4, -147.24717712402344),
+        Vector3.new(-11.041364669799805, 10.5, -147.1963348388672),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-32.53687286376953, 4.5, -160.63809204101562),
+        Vector3.new(-33.74409866333008, 12.999996185302734, -161.30233764648438),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(-31.281553268432617, 12.999996185302734, -161.2453155517578),
+        Vector3.new(-30.385379791259766, 4.5, -160.8517608642578),
+        shackTemplate.WindowFrame.WindowSill,
+        shackTemplate.WindowFrame.WindowSill,
+        Vector3.new(-0, -1, -0)
+    }
+}
+
+-- Loop untuk menjalankan BuildPlank dengan semua argumen
+for _, args in ipairs(argsList) do
+    buildPlank:FireServer(unpack(args))
+    task.wait(0.1) -- Menambahkan jeda kecil untuk menghindari lag
+end
+
+print("Script selesai dijalankan!")
