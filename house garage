@@ -1,0 +1,119 @@
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character
+local hammer = character:FindFirstChild("Hammer") or player.Backpack:FindFirstChild("Hammer")
+local house2 = workspace.Buildings:FindFirstChild("House2")
+local planks = workspace.Planks
+
+if not house2 or not hammer or not planks then
+    warn("House2, Hammer, or Planks not found!")
+    return
+end
+
+local buildPlank = hammer:FindFirstChild("BuildPlank")
+if not buildPlank then
+    warn("BuildPlank event not found!")
+    return
+end
+
+-- Daftar argumen untuk BuildPlank
+local argsList = {
+    {
+        Vector3.new(542.8064575195312, 1.0000114440917969, 472.4976501464844),
+        Vector3.new(549.6936645507812, 1.9514164924621582, 465.84307861328125),
+        house2.Part,
+        planks.Plank,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(546.928466796875, 2.1381161212921143, 467.5264892578125),
+        Vector3.new(546.57568359375, 15.000011444091797, 465.3584899902344),
+        planks.Plank,
+        house2.Part,
+        Vector3.new(-0.07111923396587372, 0.9950975179672241, 0.06872400641441345)
+    },
+    {
+        Vector3.new(541.9638671875, 15.000011444091797, 465.04180908203125),
+        Vector3.new(541.8070068359375, 1.0000114440917969, 464.8301696777344),
+        house2.Part,
+        house2.Part,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(544.6697387695312, 1.0000114440917969, 465.2464294433594),
+        Vector3.new(544.72216796875, 15.000011444091797, 464.9865417480469),
+        house2.Part,
+        house2.Part,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(538.7047729492188, 15.000011444091797, 464.5771789550781),
+        Vector3.new(539.0211791992188, 1.0000114440917969, 464.7032165527344),
+        house2.Part,
+        house2.Part,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(566.9656372070312, 15.000011444091797, 465.4192810058594),
+        Vector3.new(567.1116333007812, 1.0000114440917969, 464.9661865234375),
+        house2.Part,
+        house2.Part,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(561.8324584960938, 1.0000114440917969, 466.8338317871094),
+        Vector3.new(562.883056640625, 15.000011444091797, 465.14898681640625),
+        house2.Part,
+        house2.Part,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(558.177734375, 15.000011444091797, 465.3426818847656),
+        Vector3.new(557.7288818359375, 1.0000114440917969, 466.7240905761719),
+        house2.Part,
+        house2.Part,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(554.5375366210938, 1.0000114440917969, 466.9320373535156),
+        Vector3.new(554.0416259765625, 15.000011444091797, 465.179443359375),
+        house2.Part,
+        house2.Part,
+        Vector3.new(0, 1, 0)
+    },
+    {
+        Vector3.new(550.4083251953125, 15.000011444091797, 465.0618896484375),
+        Vector3.new(550.5807495117188, 1.0000114440917969, 465.4482116699219),
+        house2.Part,
+        house2.Part,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(572.0430908203125, 6.534089088439941, 487.5),
+        Vector3.new(571.4442138671875, 5.844974994659424, 494.0001220703125),
+        house2.WindowFrame.Part,
+        house2.WindowFrame.Part,
+        Vector3.new(0, 0, 1)
+    },
+    {
+        Vector3.new(572.2692260742188, 15.000011444091797, 488.9919738769531),
+        Vector3.new(571.4442138671875, 5.853322505950928, 489.5462951660156),
+        house2.WindowFrame.Part,
+        house2.WindowFrame.Part,
+        Vector3.new(-0, -1, -0)
+    },
+    {
+        Vector3.new(571.5950317382812, 15.000011444091797, 494.3140563964844),
+        Vector3.new(571.4442138671875, 5.871728897094727, 493.87371826171875),
+        house2.WindowFrame.Part,
+        house2.WindowFrame.Part,
+        Vector3.new(-0, -1, -0)
+    }
+}
+
+-- Loop untuk menjalankan BuildPlank dengan semua argumen
+for _, args in ipairs(argsList) do
+    buildPlank:FireServer(unpack(args))
+    task.wait(0.1) -- Menambahkan jeda kecil untuk menghindari lag
+end
+
+print("House garage built successfully!")
