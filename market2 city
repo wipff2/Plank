@@ -1,3 +1,4 @@
+-- 21, 8, 308
 local player = game:GetService("Players").LocalPlayer
 local hammer = player.Character and player.Character:FindFirstChild("Hammer")
 
@@ -29,9 +30,9 @@ local planks = {
     {Vector3.new(37.100, 13, 317.446), Vector3.new(37.235, 4, 317.535), workspace.Buildings.Shop3.WindowFrame.Part, workspace.Buildings.Shop3.WindowFrame.Part, Vector3.new(0, -1, 0)}
 }
 
-local hammer = game:GetService("Players").LocalPlayer.Character.Hammer
-for _, plank in ipairs(planks) do
-    hammer.BuildPlank:FireServer(unpack(plank))
+while character:FindFirstChild("Hammer") do
+    for _, args in ipairs(argsList) do
+        buildPlank:FireServer(unpack(plank))
+        task.wait(0.1) -- Jeda kecil untuk menghindari lag
+    end
 end
-
-print("Market build successful!")

@@ -1,3 +1,4 @@
+-- -30, 10, -139
 local player = game:GetService("Players").LocalPlayer
 local character = player.Character
 local hammer = character:FindFirstChild("Hammer") or player.Backpack:FindFirstChild("Hammer")
@@ -137,10 +138,9 @@ local argsList = {
     }
 }
 
--- Loop untuk menjalankan BuildPlank dengan semua argumen
-for _, args in ipairs(argsList) do
-    buildPlank:FireServer(unpack(args))
-    task.wait(0.1) -- Menambahkan jeda kecil untuk menghindari lag
+while character:FindFirstChild("Hammer") do
+    for _, args in ipairs(argsList) do
+        buildPlank:FireServer(unpack(args))
+        task.wait(0.1) -- Jeda kecil untuk menghindari lag
+    end
 end
-
-print("Script selesai dijalankan!")

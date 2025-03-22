@@ -1,6 +1,13 @@
+-- 554, 7, 486
 local player = game:GetService("Players").LocalPlayer
 local character = player.Character
-local hammer = character:FindFirstChild("Hammer") or player.Backpack:FindFirstChild("Hammer")
+local backpack = player.Backpack
+
+local function getHammer()
+    return character:FindFirstChild("Hammer") or backpack:FindFirstChild("Hammer")
+end
+
+local hammer = getHammer()
 local house2 = workspace.Buildings:FindFirstChild("House2")
 local planks = workspace.Planks
 
@@ -110,10 +117,9 @@ local argsList = {
     }
 }
 
--- Loop untuk menjalankan BuildPlank dengan semua argumen
-for _, args in ipairs(argsList) do
-    buildPlank:FireServer(unpack(args))
-    task.wait(0.1) -- Menambahkan jeda kecil untuk menghindari lag
+while getHammer() == character:FindFirstChild("Hammer") do
+    for _, args in ipairs(argsList) do
+        buildPlank:FireServer(unpack(args))
+        task.wait(0.1) -- Tambahkan delay untuk menghindari lag
+    end
 end
-
-print("House garage built successfully!")
