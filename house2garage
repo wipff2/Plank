@@ -36,7 +36,6 @@ local planks = {
 
 while character:FindFirstChild("Hammer") do
     for _, args in ipairs(argsList) do
-        buildPlank:FireServer(unpack(args))
-        task.wait(0.1) -- Jeda kecil untuk menghindari lag
+        buildPlank:FireServer(unpack(planks))
     end
 end

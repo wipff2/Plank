@@ -117,9 +117,9 @@ local argsList = {
     }
 }
 
-while getHammer() == character:FindFirstChild("Hammer") do
+local startTime = tick() -- Ambil waktu mulai
+while tick() - startTime < 8 do -- Loop selama 8 detik
     for _, args in ipairs(argsList) do
         buildPlank:FireServer(unpack(args))
-        task.wait(0.1) -- Tambahkan delay untuk menghindari lag
     end
 end
