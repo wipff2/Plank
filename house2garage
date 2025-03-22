@@ -35,7 +35,7 @@ local planks = {
 }
 
 while character:FindFirstChild("Hammer") do
-    for _, args in ipairs(argsList) do
+    for _, args in ipairs(planks) do
         buildPlank:FireServer(unpack(planks))
     end
 end
