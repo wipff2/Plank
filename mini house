@@ -1,17 +1,9 @@
 -- -30, 10, -139
 local player = game:GetService("Players").LocalPlayer
 local character = player.Character
-local hammer = character:FindFirstChild("Hammer") or player.Backpack:FindFirstChild("Hammer")
-local shackTemplate = workspace.Buildings:FindFirstChild("Shack1 Template")
+local buildPlankEvent = player.Character and player.Character:FindFirstChild("Hammer") and player.Character.Hammer:FindFirstChild("BuildPlank")
 
-if not shackTemplate or not hammer then
-    warn("Shack1 Template or Hammer not found!")
-    return
-end
-
-local buildPlank = hammer:FindFirstChild("BuildPlank")
-if not buildPlank then
-    warn("BuildPlank event not found!")
+if not buildPlankEvent then
     return
 end
 

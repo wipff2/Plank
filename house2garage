@@ -1,21 +1,11 @@
 -- -297, 9, 362
 local player = game:GetService("Players").LocalPlayer
-local hammer = player.Character and player.Character:FindFirstChild("Hammer")
+local character = player.Character
+local buildPlankEvent = player.Character and player.Character:FindFirstChild("Hammer") and player.Character.Hammer:FindFirstChild("BuildPlank")
 
-if not hammer then
-    warn("Hammer not found!")
-    return
-end
-
-local buildPlankEvent = hammer:FindFirstChild("BuildPlank")
 if not buildPlankEvent then
-    warn("BuildPlank event not found!")
     return
 end
-
-local housePart = workspace.Buildings.House2.Part
-local windowFrame = workspace.Buildings.House2.WindowFrame.Part
-local plank = workspace.Planks.Plank
 
 local planks = {
     {Vector3.new(-302.4699, 15.0000, 382.6381), Vector3.new(-302.3982, 1.0000, 383.7771), housePart, housePart, Vector3.new(0, -1, 0)},
@@ -34,8 +24,11 @@ local planks = {
     {Vector3.new(-287.6189, 15.0000, 382.9805), Vector3.new(-287.7320, 1.0000, 383.8937), housePart, housePart, Vector3.new(0, -1, 0)}
 }
 
-while character:FindFirstChild("Hammer") do
+while true do
     for _, args in ipairs(planks) do
-        buildPlank:FireServer(unpack(planks))
+        buildPlankEvent:FireServer(unpack(args))
     end
+    task.wait(0.1) -- kasih delay biar nggak terlalu spam
 end
+
+print("house garage 2 success")

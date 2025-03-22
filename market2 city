@@ -1,17 +1,12 @@
 -- 21, 8, 308
 local player = game:GetService("Players").LocalPlayer
-local hammer = player.Character and player.Character:FindFirstChild("Hammer")
+local character = player.Character
+local buildPlankEvent = player.Character and player.Character:FindFirstChild("Hammer") and player.Character.Hammer:FindFirstChild("BuildPlank")
 
-if not hammer then
-    warn("Hammer not found!")
-    return
-end
-
-local buildPlankEvent = hammer:FindFirstChild("BuildPlank")
 if not buildPlankEvent then
-    warn("BuildPlank event not found!")
     return
 end
+
 
 local planks = {
     {Vector3.new(-20, 8.993, 320.966), Vector3.new(-20, 7.616, 310.349), workspace.Buildings.Shop3.Part, workspace.Buildings.Shop3.Part, Vector3.new(1, 0, 0)},
@@ -30,9 +25,9 @@ local planks = {
     {Vector3.new(37.100, 13, 317.446), Vector3.new(37.235, 4, 317.535), workspace.Buildings.Shop3.WindowFrame.Part, workspace.Buildings.Shop3.WindowFrame.Part, Vector3.new(0, -1, 0)}
 }
 
-while character:FindFirstChild("Hammer") do
-    for _, args in ipairs(argsList) do
-        buildPlank:FireServer(unpack(plank))
-        task.wait(0.1) -- Jeda kecil untuk menghindari lag
+while true do
+    for _, args in ipairs(planks) do
+        buildPlankEvent:FireServer(unpack(args))
     end
+    task.wait(0.1) -- kasih delay biar nggak terlalu spam
 end

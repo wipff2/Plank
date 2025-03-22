@@ -1,24 +1,9 @@
 -- 554, 7, 486
 local player = game:GetService("Players").LocalPlayer
 local character = player.Character
-local backpack = player.Backpack
+local buildPlankEvent = player.Character and player.Character:FindFirstChild("Hammer") and player.Character.Hammer:FindFirstChild("BuildPlank")
 
-local function getHammer()
-    return character:FindFirstChild("Hammer") or backpack:FindFirstChild("Hammer")
-end
-
-local hammer = getHammer()
-local house2 = workspace.Buildings:FindFirstChild("House2")
-local planks = workspace.Planks
-
-if not house2 or not hammer or not planks then
-    warn("House2, Hammer, or Planks not found!")
-    return
-end
-
-local buildPlank = hammer:FindFirstChild("BuildPlank")
-if not buildPlank then
-    warn("BuildPlank event not found!")
+if not buildPlankEvent then
     return
 end
 
